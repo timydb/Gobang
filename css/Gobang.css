@@ -1,0 +1,93 @@
+/*通用*/
+body{
+    overflow-x:hidden;
+}
+.myTpl{
+    padding-bottom:50px;
+    width:100%;
+    position:absolute;
+    transition:all 1s linear;
+}
+.myTpl.ng-leave{
+    left:0;
+}
+.myTpl.ng-leave-active{
+    left:-100%;
+}
+.myTpl.ng-enter{
+    left:100%;
+}
+.myTpl.ng-enter-active{
+    left:0;
+}
+/*起始页面*/
+.start{
+    overflow: hidden;
+    width:420px;
+    height:420px;
+    margin:100px auto 0;
+    padding:10px 50px;
+    border:4px solid #ddd;
+    border-radius:10px;
+}
+@media screen and (max-height:620px){
+    .start{
+        margin-top:0;
+    }
+}
+.start>ul{
+    margin:30px auto 10px;
+}
+.start>ul li{
+    width:145px;
+}
+.start>a.startGame{
+    line-height:60px;
+}
+.start>button.btnLogin{
+    margin-top:50px;
+}
+.start>div.alert{
+    margin-top:70px;
+}
+#register .modal-dialog{
+    width:400px;
+}
+/*游戏*/
+.gameTpl{
+    padding:20px;
+}
+canvas{
+    cursor:pointer;
+    display:block;
+    margin:0 auto;
+    box-shadow:-2px -2px 2px #efefef,5px 5px 5px #b9b9b9;
+}
+/*个人空间*/
+#userSpace table tr td button:first-child{
+    width:100px;
+}
+
+/*页脚*/
+nav ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+nav ul li{
+    float:left;
+    width:33%;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+}
+nav ul li a{
+    display:inline-block;
+    width:100%;
+    color:#000;
+    cursor: pointer;
+}
+nav ul li a:hover{
+    background:#eee;
+    text-decoration: none;
+}

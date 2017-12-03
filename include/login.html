@@ -1,0 +1,90 @@
+<div id="login" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">随便玩玩</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="userName">用户名：</label>
+                        <input id="userName" ng-model="userLogin.uname" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="userPwd">密码：</label>
+                        <input id="userPwd" ng-model="userLogin.upwd" type="password" class="form-control"/>
+                    </div>
+                    <div class="checkbox-inline">
+                        <label for="noLogin7">
+                            <input id="noLogin7" ng-model="userLogin.noLogin7" type="checkbox"/>七天内不再登录
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div ng-show="errMessage" class="alert alert-danger text-center">{{errMessage}}</div>
+                <button ng-click="checkUser()" class="btn btn-success btn-block">登录</button>
+                <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#register">注册</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="register" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">返回登录页</button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="uname">用户名：</label>
+                        <input id="uname" ng-model="user.name" type="text" class="form-control" required
+                               placeholder="请输入用户名"/>
+                        <span ng-show="user.name&&canUse" class="text-success">该用户名可以使用</span>
+                        <span ng-show="user.name&&!canUse" class="text-danger">该用户名已被占用！</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="upwd">密码：</label>
+                        <input id="upwd" ng-model="user.pwd" type="password" class="form-control" required
+                               placeholder="请输入密码"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="upwd1">确认密码：</label>
+                        <input id="upwd1" ng-model="user.pwd1" type="password" class="form-control" required
+                               placeholder="请再次输入密码"/>
+                        <span ng-show="user.pwd1&&user.pwd1!==user.pwd" class="text-danger">两次输入不一致！</span>
+                    </div>
+                    <div class="form-group">
+                        <label>性别：</label><br>
+                        <div class="radio-inline">
+                            <label for="male">
+                                <input id="male" ng-model="user.gender" type="radio" value="1" name="gender"/>男
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="female">
+                                <input id="female" ng-model="user.gender" type="radio" value="2" name="gender"/>女
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">联系电话：</label>
+                        <input id="phone" ng-model="user.phone" class="form-control" type="text" required
+                               placeholder="请输入手机号"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱：</label>
+                        <input id="email" ng-model="user.email" class="form-control" type="text" required
+                               placeholder="请输入邮箱"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button ng-hide="id" ng-click="submitUser()" class="btn btn-danger btn-block">提交注册信息</button>
+                    <div ng-show="id" class="alert alert-success text-center">注册成功，用户id为{{id}}</div>
+                    <div ng-show="errMsg&&!id" class="alert alert-danger text-center">{{errMsg}}</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

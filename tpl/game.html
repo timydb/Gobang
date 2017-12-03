@@ -1,0 +1,55 @@
+<div class="container gameTpl">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="text-info">
+                当前登录：{{uid?userLogin.uname:'游客'}}
+                <a href="javascript:;" ng-show="uid" ng-click="logout()">注销</a>
+                <a href="javascript:$('#login').modal();" ng-hide="uid">登录</a>
+            </p>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <button ng-click="restartGame()" class="btn btn-success btn-block center-block startGame">重新开始</button>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-3 col-xs-12 leftSide">
+            <h3 ng-show="myOff" class="text-center">玩家：黑方</h3>
+            <h3 ng-hide="myOff" class="text-center">玩家：白方</h3>
+            <img ng-src="img/user.png" class="hidden-xs img-responsive center-block img-circle" width="150px" alt="头像无法显示"><br>
+            <button class="btn btn-info btn-block undoOne" ng-click="undoOne()" ng-disabled="!step">悔棋</button><br>
+            <button class="btn btn-danger btn-block giveUp" ng-click="giveUp()" ng-disabled="gameOver">认输</button><br>
+            <p class="alert alert-info">当前步数：{{step}}</p>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <canvas id="chess" ng-click="oneStep($event)"></canvas>
+        </div>
+        <div class="col-md-3 col-xs-12 rightSide">
+            <h3 ng-hide="myOff" class="text-center">电脑：黑方</h3>
+            <h3 ng-show="myOff" class="text-center">电脑：白方</h3>
+            <img ng-src="img/cpu.png" class="hidden-xs img-responsive center-block img-circle" width="150px" alt="头像无法显示"><br>
+            <h4 class="alert alert-info">当前棋局记录：</h4>
+            <select class="form-control">
+                <option>点此查看双方落子记录</option>
+                <option ng-repeat="piece in records track by $index">
+                    {{($index+myOff)%2?'玩家':'电脑'}}：{{piece}}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom footer">
+    <div class="container">
+        <ul>
+            <li>
+                <a href="#/start"><span class="glyphicon glyphicon-home"></span> 返回</a>
+            </li>
+            <li>
+                <a ng-click="goUserSpace()"><span class="glyphicon glyphicon-user"></span> 个人空间</a>
+            </li>
+            <li>
+                <a ng-click="saveGame()"><span class="glyphicon glyphicon-floppy-disk"></span> 存档</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div ng-include="'include/login.html'"></div>

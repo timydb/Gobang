@@ -1,0 +1,13 @@
+<div class="start">
+    <h1 class="text-center">五子棋（人机版）</h1>
+    <ul class="nav nav-pills">
+        <li class="{{myOff&&'active'}}"><a class="btn" data-toggle="pill" ng-click="setOff(1)">先手</a></li>
+        <li class="{{!myOff&&'active'}}"><a class="btn" data-toggle="pill" ng-click="setOff(0)">后手</a></li>
+    </ul>
+    <a href="#/game" class="btn btn-danger center-block startGame">{{records.length?'继续':'开始'}}游戏</a>
+    <button ng-hide="uid"  class="btn btn-success btn-block btnLogin" data-toggle="modal" data-target="#login">登录</button>
+    <h4 ng-hide="uid" class="alert alert-info text-center">（登录后才可使用读/存档功能）</h4>
+    <div ng-show="uid" class="alert alert-success">欢迎回来，{{userLogin.uname}}&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" ng-click="logout()">注销</a></div>
+    <a href="#/userSpace" ng-show="uid" class="btn btn-primary btn-block">读取存档</a>
+</div>
+<div ng-include="'include/login.html'"></div>
